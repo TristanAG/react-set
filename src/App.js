@@ -5,40 +5,54 @@ class Card extends React.Component {
   constructor(props){
     super(props)
     this.handleCardClick = this.handleCardClick.bind(this)
+    this.state = {
+      isActive: false
+    }
   }
 
+  //what if you sent up all the fucking card data, and then when you render the cards from the Cards you render the correct data?!?
   handleCardClick(){
-    this.props.sendCardInfoToGameManager(this.props.name)
+    this.setState((prevState) => ({
+      isActive: !prevState.isActive
+    }))
+    this.props.sendCardInfoToGameManager(this.state.isActive)
+
   }
 
   render(){
     return (
       <div className="card" onClick={this.handleCardClick}>
         <p>{this.props.name}</p>
-        <p>{this.props.isActive ? 'active' : 'not active'}</p>
+        <p>{this.state.isActive ? 'active' : 'not active'}</p>
       </div>
     )
   }
 }
 
-class DealtCards extends React.Component {
+class Cards extends React.Component {
   constructor(props){
     super(props)
     this.sendCardInfoToGameManager = this.sendCardInfoToGameManager.bind(this)
   }
 
-  sendCardInfoToGameManager(name){
-    console.log(name)
-    this.props.renderSelectedCard(name)
+  sendCardInfoToGameManager(e){
+    console.log(e)
+    // this.props.renderSelectedCards(props)
   }
 
   render(){
     return (
-      <div className="dealtCards">
-        {this.props.cards.map(card => (
-          <Card {...card} key={card.name} sendCardInfoToGameManager={this.sendCardInfoToGameManager}/>
-        ))}
-
+      <div>
+        <div className="dealtCards">
+          {this.props.cards.map(card => (
+            <Card
+              {...card}
+              // isActive={true}
+              key={card.name}
+              sendCardInfoToGameManager={this.sendCardInfoToGameManager}
+            />
+          ))}
+        </div>
       </div>
     )
   }
@@ -47,24 +61,34 @@ class DealtCards extends React.Component {
 class App extends Component {
   constructor(props){
     super(props)
-    this.renderSelectedCard = this.renderSelectedCard.bind(this)
-    console.log(props.cards)
+    this.renderSelectedCards = this.renderSelectedCards.bind(this)
+    this.state = {
+      activeCards: []
+    }
   }
 
-  renderSelectedCard(name){
-    console.log(name)
+
+
+  renderSelectedCards(props){
+    // console.log(props.isActive)
+
+    this.setState((prevState) => ({
+      activeCards: prevState.activeCards.concat({
+        ...props
+      })
+    }))
   }
 
   render() {
     return (
       <div className="app">
         <div className="gameManager">
-          <b>gameManager:</b>
+          <b>gameManager: {this.state.activeCards.length}</b>
         </div>
         <div className="info">
           info: ///
         </div>
-        <DealtCards cards={this.props.cards} renderSelectedCard={this.renderSelectedCard}/>
+        <Cards cards={this.props.cards} renderSelectedCards={this.renderSelectedCards}/>
       </div>
     );
   }
