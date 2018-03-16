@@ -10,13 +10,11 @@ class Card extends React.Component {
     }
   }
 
-  //what if you sent up all the fucking card data, and then when you render the cards from the Cards you render the correct data?!?
-  handleCardClick(){
+  handleCardClick(e){
     this.setState((prevState) => ({
       isActive: !prevState.isActive
     }))
-    this.props.sendCardInfoToGameManager(this.state.isActive)
-
+    this.props.sendCardInfoToGameManager(this.props.name)
   }
 
   render(){
@@ -29,25 +27,59 @@ class Card extends React.Component {
   }
 }
 
+
+
+
 class Cards extends React.Component {
   constructor(props){
     super(props)
     this.sendCardInfoToGameManager = this.sendCardInfoToGameManager.bind(this)
+
+
+    this.state = {
+      isActive: false,
+      selectedCards: []
+    }
+
+
   }
 
-  sendCardInfoToGameManager(e){
-    console.log(e)
-    // this.props.renderSelectedCards(props)
+  sendCardInfoToGameManager(selectedCard){
+
+    if(this.state.selectedCards.includes(selectedCard)){
+      this.setState((prevState) => ({
+        selectedCards: prevState.selectedCards.filter((card) => {
+          return selectedCard !== card
+        })
+      }))
+    } else {
+      this.setState((prevState) => ({
+        selectedCards: prevState.selectedCards.concat(selectedCard)
+      }),() => {
+        //this is the callback that executes after react actually sets the state
+
+        if(this.state.selectedCards.length === 3){
+          console.log('hey')
+        }
+      })
+    }
   }
 
   render(){
     return (
       <div>
         <div className="dealtCards">
+          <p>
+            {
+
+            }
+          </p>
+          <b>{this.state.selectedCards}</b>
+
           {this.props.cards.map(card => (
             <Card
               {...card}
-              // isActive={true}
+              isActive={this.state.isActive}
               key={card.name}
               sendCardInfoToGameManager={this.sendCardInfoToGameManager}
             />
