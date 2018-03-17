@@ -11,7 +11,6 @@ class Card extends React.Component {
   }
 
   handleCardClick(e){
-    console.log(this.props)
     this.setState((prevState) => ({
       isActive: !prevState.isActive
     }))
@@ -35,11 +34,12 @@ class Cards extends React.Component {
   constructor(props){
     super(props)
     this.sendCardInfoToGameManager = this.sendCardInfoToGameManager.bind(this)
-    this.populateCards = this.populateCards.bind(this)
+    this.resetDeck = this.resetDeck.bind(this)
     this.state = {
       isActive: false,
       selectedCards: [],
-      cards: this.props.cards
+      cards: this.props.cards,
+      sets: []
     }
   }
 
@@ -62,16 +62,24 @@ class Cards extends React.Component {
   }
 
   determineIfMatch(){
-    //you need to put it into a component
-    this.setState(() => ({
-      isActive: false,
-      cards: false
+    //so within this function we can begin to check if match or !match
+
+
+
+    console.log(this.state.selectedCards)
+
+    this.setState((prevState) => ({
+      sets: prevState.sets.concat(this.state.selectedCards),
+      selectedCards: []
     }))
 
   }
 
-  populateCards(){
-
+  resetDeck(){
+    console.log('hello world')
+    this.setState(() => ({
+      selectedCards: 'hi'
+    }))
   }
 
   render(){
@@ -79,16 +87,18 @@ class Cards extends React.Component {
       <div>
         <div className="dealtCards">
 
-          <b>{this.state.selectedCards.length === 3 && 'let us rerender now'}</b>
-
-          {this.props.cards.map(card => (
-            <Card
-              {...card}
-              isActive={false}
-              key={card.name}
-              sendCardInfoToGameManager={this.sendCardInfoToGameManager}
-            />
-          ))}
+          {this.state.selectedCards.length < 3 &&
+            this.props.cards.map(card => (
+              <Card
+                {...card}
+                key={card.name}
+                sendCardInfoToGameManager={this.sendCardInfoToGameManager}
+              />
+            ))
+          }
+        </div>
+        <div className="sets">
+          {this.state.sets}
         </div>
       </div>
     )
