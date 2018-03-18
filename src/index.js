@@ -7,31 +7,44 @@ import registerServiceWorker from './registerServiceWorker';
 import GreenDiamondOneEmpty from './images/green-diamond-one-empty.png'
 import PurpleDiamondOneFilled from './images/purple-diamond-one-filled.png'
 import PurpleDiamondOneEmpty from './images/purple-diamond-one-empty.png'
+import GreenDiamondOneFilled from './images/green-diamond-one-filled.png'
 
 const cards = [
   {
     name: 'Card1',
-    color: 'red',
+    color: 'green',
     shape: 'diamond',
     amount: 1,
+    fill: 'empty',
     isActive: false,
     image: GreenDiamondOneEmpty
   },
   {
     name: 'Card2',
-    color: 'red',
+    color: 'purple',
     shape: 'diamond',
-    amount: 2,
+    amount: 1,
+    fill: 'filled',
     isActive: false,
     image: PurpleDiamondOneFilled
   },
   {
     name: 'Card3',
-    color: 'red',
+    color: 'purple',
     shape: 'diamond',
-    amount: 3,
+    amount: 1,
+    fill: 'empty',
     isActive: false,
     image: PurpleDiamondOneEmpty
+  },
+  {
+    name: 'Card4',
+    color: 'green',
+    shape: 'diamond',
+    amount: 1,
+    fill: 'filled',
+    isActive: false,
+    image: GreenDiamondOneFilled
   }
 ]
 

@@ -10,7 +10,7 @@
   width: 127px;
 }
 .card{
-
+  display: inline-block;
   padding: 4px;
   width: 120px;
   margin-bottom: 6px;

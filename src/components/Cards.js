@@ -1,5 +1,7 @@
 import React from 'react'
 import Card from './Card'
+import Sets from './Sets'
+
 
 class Cards extends React.Component {
   constructor(props){
@@ -34,31 +36,36 @@ class Cards extends React.Component {
 
   determineIfMatch(){
     //so within this function we can begin to check if match or !match
-    console.log(this.state.selectedCards)
+    // alert(this.state.selectedCards[0].name)
     this.setState((prevState) => ({
-      sets: prevState.sets.concat(this.state.selectedCards),
+      sets: prevState.sets.concat({
+        card1: this.state.selectedCards[0].image,
+        card2: this.state.selectedCards[1].image,
+        card3: this.state.selectedCards[2].image
+      }),
       selectedCards: []
     }))
   }
 
+
+
   render(){
     return (
       <div>
-        <div className="dealtCards">
-          {
-            this.state.selectedCards.length < 3 &&
-              this.props.cards.map(card => (
-                <Card
-                  {...card}
-                  key={card.name}
-                  addCardToHand={this.addCardToHand}
-                />
-              ))
-          }
-        </div>
         <div className="cardInHand">
-          <h3>{console.log(this.state.selectedCards.length)}</h3>
+          <h3>{this.state.selectedCards.length}</h3>
         </div>
+        <div className="dealtCards">
+          {this.state.selectedCards.length < 3 &&
+            this.props.cards.map(card => (
+              <Card
+                {...card}
+                key={card.name}
+                addCardToHand={this.addCardToHand}
+              />
+            ))}
+        </div>
+        <Sets sets={this.state.sets}/>
       </div>
     )
   }

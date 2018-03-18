@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Cards from './components/Cards'
 
+
 class App extends Component {
   constructor(props){
     super(props)
@@ -25,7 +26,11 @@ class App extends Component {
         <div className="info">
           set-game
         </div>
-        <Cards cards={this.props.cards} renderSelectedCards={this.renderSelectedCards}/>
+        <Cards
+          cards={this.props.cards}
+          renderSelectedCards={this.renderSelectedCards}
+        />
+      
       </div>
     );
   }
