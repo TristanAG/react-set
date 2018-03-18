@@ -13,9 +13,7 @@ import React from 'react'
 
 const Sets = ({sets}) => (
   <div>
-    {
-      sets.length
-    }
+    <p># of sets: <i>{sets.length}</i></p>
   </div>
 )
 
