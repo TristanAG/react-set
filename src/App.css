@@ -2,8 +2,15 @@
   padding-left: 12px;
   padding-top: 12px;
 }
+.info{
+  padding: 3px;
+  background-color: #cc99ff;
+  font-size: 1.8em;
+  color: white;
+  width: 127px;
+}
 .card{
-  border: 1px solid red;
+
   padding: 4px;
   width: 120px;
   margin-bottom: 6px;
