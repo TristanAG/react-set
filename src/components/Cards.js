@@ -16,7 +16,7 @@ class Cards extends React.Component {
   }
 
   addCardToHand(selectedCard){
-    console.log(selectedCard)
+    // console.log(selectedCard)
     if(this.state.selectedCards.includes(selectedCard)){
       this.setState((prevState) => ({
         selectedCards: prevState.selectedCards.filter((card) => {
@@ -39,9 +39,9 @@ class Cards extends React.Component {
     // alert(this.state.selectedCards[0].name)
     this.setState((prevState) => ({
       sets: prevState.sets.concat({
-        card1: this.state.selectedCards[0].image,
-        card2: this.state.selectedCards[1].image,
-        card3: this.state.selectedCards[2].image
+        card1: this.state.selectedCards[0],
+        card2: this.state.selectedCards[1],
+        card3: this.state.selectedCards[2]
       }),
       selectedCards: []
     }))
@@ -65,7 +65,8 @@ class Cards extends React.Component {
               />
             ))}
         </div>
-        <Sets sets={this.state.sets}/>
+
+        <Sets sets={this.state.sets} setNum={this.state.sets.length}/>
       </div>
     )
   }

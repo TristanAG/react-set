@@ -1,19 +1,11 @@
 import React from 'react'
+import Set from './Set'
 
-
-  //do a for loop, and then do a map of cards within that for loop for each set
-  //do a for loop, and then do a map of cards within that for loop for each set
-  //do a for loop, and then do a map of cards within that for loop for each set
-  //do a for loop, and then do a map of cards within that for loop for each set
-  //do a for loop, and then do a map of cards within that for loop for each set
-  //do a for loop, and then do a map of cards within that for loop for each set
-  //do a for loop, and then do a map of cards within that for loop for each set
-  //do a for loop, and then do a map of cards within that for loop for each set
-
-
-const Sets = ({sets}) => (
+const Sets = (props) => (
   <div>
-    <p># of sets: <i>{sets.length}</i></p>
+    {props.sets.map((set) => (
+      <Set {...set} key={Math.random()}/>
+    ))}
   </div>
 )
 

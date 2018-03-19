@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Cards from './components/Cards'
 
-
 class App extends Component {
   constructor(props){
     super(props)
@@ -30,7 +29,7 @@ class App extends Component {
           cards={this.props.cards}
           renderSelectedCards={this.renderSelectedCards}
         />
-      
+
       </div>
     );
   }
