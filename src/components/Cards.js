@@ -65,8 +65,9 @@ class Cards extends React.Component {
               />
             ))}
         </div>
-
-        <Sets sets={this.state.sets} setNum={this.state.sets.length}/>
+        <div className="sets">
+          <Sets sets={this.state.sets} setNum={this.state.sets.length}/>
+        </div>
       </div>
     )
   }

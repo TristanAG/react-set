@@ -18,11 +18,11 @@ class Card extends React.Component {
 
   render(){
     return (
-      <div className="card" onClick={this.handleCardClick}>
+      <div className="setCard" onClick={this.handleCardClick}>
         <img
           src={this.props.image}
           alt={this.props.name}
-          className="card"
+          className="setCard"
         />
         <p><small><i>
           {this.state.isActive ? 'active' : 'not active'}

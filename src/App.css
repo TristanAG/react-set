@@ -9,7 +9,7 @@
   color: white;
   width: 127px;
 }
-.card{
+.setCard{
   display: inline-block;
   padding: 4px;
   width: 120px;
@@ -19,12 +19,12 @@ p{
   margin: 0px;
 }
 .set{
-  border-top: 3px solid #cc99ff;
+  /* background-color: #cc99ff; */
   width: 252px;
 }
 
 .set img{
   width: 80px;
   max-width: 100%;
-  margin-right: 4px;
+  margin: 2px;
 }
