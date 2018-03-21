@@ -122,19 +122,21 @@ class Cards extends React.Component {
     }
 
     if(colorStatus === 'pass' && shapeStatus === 'pass' && amountStatus === 'pass' && fillStatus === 'pass'){
-      console.log('set!!')
+      alert('SET!')
+      this.setState((prevState) => ({
+        sets: prevState.sets.concat({
+          cardOne: cardOne,
+          cardTwo: cardTwo,
+          cardThree: cardThree
+        }),
+        selectedCards: []
+      }))
     }else{
-      console.log('not set :( :(')
+      alert('not a set tho...')
+      this.setState((prevState) => ({
+        selectedCards: []
+      }))
     }
-
-    this.setState((prevState) => ({
-      sets: prevState.sets.concat({
-        cardOne: cardOne,
-        cardTwo: cardTwo,
-        cardThree: cardThree
-      }),
-      selectedCards: []
-    }))
   }
 
 
@@ -153,6 +155,13 @@ class Cards extends React.Component {
                 />
               ))}
           </div>
+          {/* <div className={this.state.sets.length ? "modal" : "modal is-active"}>
+            <div className="modal-background"></div>
+            <div className="modal-content">
+              hi
+            </div>
+            <button className="modal-close is-large" aria-label="close"></button>
+          </div> */}
         </div>
         <div className="column">
           <div className="sets">
