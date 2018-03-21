@@ -5,7 +5,8 @@ class Card extends React.Component {
     super(props)
     this.handleCardClick = this.handleCardClick.bind(this)
     this.state = {
-      isActive: false
+      isActive: false,
+      class: 'active'
     }
   }
 
@@ -22,11 +23,8 @@ class Card extends React.Component {
         <img
           src={this.props.image}
           alt={this.props.name}
-          className="setCard"
+          className={this.state.isActive ? "terp" : "notTerp"}
         />
-        <p><small><i>
-          {this.state.isActive ? 'active' : 'not active'}
-        </i></small></p>
       </div>
     )
   }

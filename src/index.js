@@ -8,6 +8,8 @@ import GreenDiamondOneEmpty from './images/green-diamond-one-empty.png'
 import PurpleDiamondOneFilled from './images/purple-diamond-one-filled.png'
 import PurpleDiamondOneEmpty from './images/purple-diamond-one-empty.png'
 import GreenDiamondOneFilled from './images/green-diamond-one-filled.png'
+import RedDiamondThreeEmpty from './images/red-diamond-three-empty.png'
+import PurpleOvalThreeStriped from './images/purple-oval-three-striped.png'
 
 const cards = [
   {
@@ -45,7 +47,26 @@ const cards = [
     fill: 'filled',
     isActive: false,
     image: GreenDiamondOneFilled
+  },
+  {
+    name: 'Card5',
+    color: 'red',
+    shape: 'diamond',
+    amount: 3,
+    fill: 'empty',
+    isActive: false,
+    image: RedDiamondThreeEmpty
+  },
+  {
+    name: 'Card6',
+    color: 'purple',
+    shape: 'oval',
+    amount: 3,
+    fill: 'striped',
+    isActive: false,
+    image: PurpleOvalThreeStriped
   }
+
 ]
 
 ReactDOM.render(<App cards={cards}/>, document.getElementById('root'));

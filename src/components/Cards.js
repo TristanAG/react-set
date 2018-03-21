@@ -16,7 +16,6 @@ class Cards extends React.Component {
   }
 
   addCardToHand(selectedCard){
-    // console.log(selectedCard)
     if(this.state.selectedCards.includes(selectedCard)){
       this.setState((prevState) => ({
         selectedCards: prevState.selectedCards.filter((card) => {
@@ -28,20 +27,31 @@ class Cards extends React.Component {
         selectedCards: prevState.selectedCards.concat(selectedCard)
       }),() => {
         if(this.state.selectedCards.length === 3){
-          this.determineIfMatch()
+          this.determineIfSet()
         }
       })
     }
   }
 
-  determineIfMatch(){
+  determineIfSet(){
     //so within this function we can begin to check if match or !match
-    // alert(this.state.selectedCards[0].name)
+    const cardOne = this.state.selectedCards[0]
+    const cardTwo = this.state.selectedCards[1]
+    const cardThree = this.state.selectedCards[2]
+
+    //you gotta see if the colors are equal AND fire a modal
+    if(cardOne.color === cardTwo.color){
+      //if different do one thing
+      
+    }else{
+
+    }
+
     this.setState((prevState) => ({
       sets: prevState.sets.concat({
-        card1: this.state.selectedCards[0],
-        card2: this.state.selectedCards[1],
-        card3: this.state.selectedCards[2]
+        cardOne: cardOne,
+        cardTwo: cardTwo,
+        cardThree: cardThree
       }),
       selectedCards: []
     }))
@@ -51,22 +61,23 @@ class Cards extends React.Component {
 
   render(){
     return (
-      <div>
-        <div className="cardInHand">
-          <h3>{this.state.selectedCards.length}</h3>
+      <div className="columns">
+        <div className="column">
+          <div className="dealtCards">
+            {this.state.selectedCards.length < 3 &&
+              this.props.cards.map(card => (
+                <Card
+                  {...card}
+                  key={card.name}
+                  addCardToHand={this.addCardToHand}
+                />
+              ))}
+          </div>
         </div>
-        <div className="dealtCards">
-          {this.state.selectedCards.length < 3 &&
-            this.props.cards.map(card => (
-              <Card
-                {...card}
-                key={card.name}
-                addCardToHand={this.addCardToHand}
-              />
-            ))}
-        </div>
-        <div className="sets">
-          <Sets sets={this.state.sets} setNum={this.state.sets.length}/>
+        <div className="column">
+          <div className="sets">
+            <Sets sets={this.state.sets} setNum={this.state.sets.length}/>
+          </div>
         </div>
       </div>
     )

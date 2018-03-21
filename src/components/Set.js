@@ -2,9 +2,9 @@ import React from 'react'
 
 export default (props) => (
   <div className="set">
-    <img src={props.card1.image} alt={props.card1.name}/>
-    <img src={props.card2.image} alt={props.card1.name}/>
-    <img src={props.card3.image} alt={props.card1.name}/>
+    <img src={props.cardOne.image} alt={props.cardOne.name}/>
+    <img src={props.cardTwo.image} alt={props.cardTwo.name}/>
+    <img src={props.cardThree.image} alt={props.cardThree.name}/>
   </div>
 )
 

@@ -23,11 +23,12 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <h1>
-        Hello World
-      </h1>
-        <div className="info">
-          set-game
+        <div className="columns">
+          <div className="column">
+            <div className="info">
+              set-game
+            </div>
+          </div>
         </div>
         <Cards
           cards={this.props.cards}
