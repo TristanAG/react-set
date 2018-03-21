@@ -7,9 +7,10 @@ import registerServiceWorker from './registerServiceWorker';
 import GreenDiamondOneEmpty from './images/green-diamond-one-empty.png'
 import PurpleDiamondOneFilled from './images/purple-diamond-one-filled.png'
 import PurpleDiamondOneEmpty from './images/purple-diamond-one-empty.png'
-import GreenDiamondOneFilled from './images/green-diamond-one-filled.png'
+import GreenDiamondOneStriped from './images/green-diamond-one-striped.png'
 import RedDiamondThreeEmpty from './images/red-diamond-three-empty.png'
 import PurpleOvalThreeStriped from './images/purple-oval-three-striped.png'
+import GreenDiamondOneFilled from './images/green-diamond-one-filled.png'
 
 const cards = [
   {
@@ -44,9 +45,9 @@ const cards = [
     color: 'green',
     shape: 'diamond',
     amount: 1,
-    fill: 'filled',
+    fill: 'striped',
     isActive: false,
-    image: GreenDiamondOneFilled
+    image: GreenDiamondOneStriped
   },
   {
     name: 'Card5',
@@ -65,6 +66,15 @@ const cards = [
     fill: 'striped',
     isActive: false,
     image: PurpleOvalThreeStriped
+  },
+  {
+    name: 'Card7',
+    color: 'green',
+    shape: 'diamond',
+    amount: 1,
+    fill: 'filled',
+    isActive: false,
+    image: GreenDiamondOneFilled
   }
 
 ]
