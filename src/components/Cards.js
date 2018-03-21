@@ -46,82 +46,84 @@ class Cards extends React.Component {
     let amountStatus = ''
     let fillStatus = ''
 
-    //COLOR
-    if(cardOne.color === cardTwo.color){
-      let color = cardOne.color
-      if(color === cardThree.color){
-        colorStatus = 'pass'
-      }else{
-        colorStatus = 'fail'
+      //COLOR
+      if(cardOne.color === cardTwo.color){
+        let color = cardOne.color
+        if(color === cardThree.color){
+          colorStatus = 'pass'
+        }else{
+          colorStatus = 'fail'
+        }
+      }else if(cardOne.color !== cardTwo.color){
+        let cardOneColor = cardOne.color
+        let cardTwoColor = cardTwo.color
+        if(cardOneColor !== cardThree.color && cardTwoColor !== cardThree.color){
+          colorStatus = 'pass'
+        }else{
+          colorStatus = 'fail'
+        }
       }
-    }else if(cardOne.color !== cardTwo.color){
-      let cardOneColor = cardOne.color
-      let cardTwoColor = cardTwo.color
-      if(cardOneColor !== cardThree.color && cardTwoColor !== cardThree.color){
-        colorStatus = 'pass'
-      }else{
-        colorStatus = 'fail'
-      }
-    }
 
+        //SHAPE
+        if(cardOne.shape === cardTwo.shape){
+          let shape = cardOne.shape
+          if(shape === cardThree.shape){
+            shapeStatus = 'pass'
+          }else{
+            shapeStatus = 'fail'
+          }
+        }else if(cardOne.shape !== cardTwo.shape){
+          let cardOneShape = cardOne.shape
+          let cardTwoShape = cardTwo.shape
+          if(cardOneShape !== cardThree.shap && cardTwoShape !== cardThree.shape){
+            shapeStatus = 'pass'
+          }else{
+            shapeStatus = 'fail'
+          }
+        }
 
-    //SHAPE
-    if(cardOne.shape === cardTwo.shape){
-      let shape = cardOne.shape
-      if(shape === cardThree.shape){
-        shapeStatus = 'pass'
-      }else{
-        shapeStatus = 'fail'
-      }
-    }else if(cardOne.shape !== cardTwo.shape){
-      let cardOneShape = cardOne.shape
-      let cardTwoShape = cardTwo.shape
-      if(cardOneShape !== cardThree.shap && cardTwoShape !== cardThree.shape){
-        shapeStatus = 'pass'
-      }else{
-        shapeStatus = 'fail'
-      }
-    }
+          //AMOUNT
+          if(cardOne.amount === cardTwo.amount){
+            let amount = cardOne.amount
+            if(amount === cardThree.amount){
+              amountStatus = 'pass'
+            }else{
+              amountStatus = 'fail'
+            }
+          }else if(cardOne.amount !== cardTwo.amount){
+            let cardOneAmount = cardOne.amount
+            let cardTwoAmount = cardTwo.amount
+            if(cardOneAmount !== cardThree.amount && cardTwoAmount !== cardThree.amount){
+              amountStatus = 'pass'
+            }else{
+              amountStatus = 'fail'
+            }
+          }
 
+            //FILL
+            if(cardOne.fill === cardTwo.fill){
+              let fill = cardOne.fill
+              if(fill === cardThree.fill){
+                fillStatus = 'pass'
+              }else{
+                fillStatus = 'fail'
+              }
+            }else if(cardOne.fill !== cardTwo.fill){
+              let cardOneFill = cardOne.fill
+              let cardTwoFill = cardTwo.fill
+              if(cardOneFill !== cardThree.fill && cardTwoFill !== cardThree.fill){
+                fillStatus = 'pass'
+              }else{
+                fillStatus = 'fail'
+              }
+            }
 
-    //AMOUNT
-    if(cardOne.amount === cardTwo.amount){
-      let amount = cardOne.amount
-      if(amount === cardThree.amount){
-        amountStatus = 'pass'
-      }else{
-        amountStatus = 'fail'
-      }
-    }else if(cardOne.amount !== cardTwo.amount){
-      let cardOneAmount = cardOne.amount
-      let cardTwoAmount = cardTwo.amount
-      if(cardOneAmount !== cardThree.amount && cardTwoAmount !== cardThree.amount){
-        amountStatus = 'pass'
-      }else{
-        amountStatus = 'fail'
-      }
-    }
-
-
-    //FILL
-    if(cardOne.fill === cardTwo.fill){
-      let fill = cardOne.fill
-      if(fill === cardThree.fill){
-        fillStatus = 'pass'
-      }else{
-        fillStatus = 'fail'
-      }
-    }else if(cardOne.fill !== cardTwo.fill){
-      let cardOneFill = cardOne.fill
-      let cardTwoFill = cardTwo.fill
-      if(cardOneFill !== cardThree.fill && cardTwoFill !== cardThree.fill){
-        fillStatus = 'pass'
-      }else{
-        fillStatus = 'fail'
-      }
-    }
-
-    if(colorStatus === 'pass' && shapeStatus === 'pass' && amountStatus === 'pass' && fillStatus === 'pass'){
+    if(
+      colorStatus === 'pass' &&
+      shapeStatus === 'pass' &&
+      amountStatus === 'pass' &&
+      fillStatus === 'pass'
+    ){
       alert('SET!')
       this.setState((prevState) => ({
         sets: prevState.sets.concat({
