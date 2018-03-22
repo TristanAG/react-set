@@ -14,9 +14,7 @@ class App extends Component {
 
   renderSelectedCards(props){
     this.setState((prevState) => ({
-      activeCards: prevState.activeCards.concat({
-        ...props
-      })
+      activeCards: prevState.activeCards.concat({...props})
     }))
   }
 
@@ -25,10 +23,21 @@ class App extends Component {
       <div className="app">
         <div className="columns">
           <div className="column">
+
             <div className="info">
               set-game
             </div>
+
           </div>
+          <div className="column">
+            <div className="content">
+              <h2>Hello World</h2>
+            </div>
+            <a className="button is-primary">
+              Primary button
+            </a>
+          </div>
+
         </div>
         <Cards
           cards={this.props.cards}

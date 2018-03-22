@@ -7,5 +7,3 @@ export default (props) => (
     <img src={props.cardThree.image} alt={props.cardThree.name}/>
   </div>
 )
-
-// export default Set

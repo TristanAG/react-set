@@ -2,7 +2,6 @@ import React from 'react'
 import Card from './Card'
 import Sets from './Sets'
 
-
 class Cards extends React.Component {
   constructor(props){
     super(props)
@@ -39,12 +38,13 @@ class Cards extends React.Component {
     const cardTwo = this.state.selectedCards[1]
     const cardThree = this.state.selectedCards[2]
 
-
     //i only need to figure this algorithm out one time
     let colorStatus = ''
     let shapeStatus = ''
     let amountStatus = ''
     let fillStatus = ''
+
+      //all of these need to pass, so it can be consolidated into an algorithm
 
       //COLOR
       if(cardOne.color === cardTwo.color){
@@ -125,6 +125,7 @@ class Cards extends React.Component {
       fillStatus === 'pass'
     ){
       alert('SET!')
+
       this.setState((prevState) => ({
         sets: prevState.sets.concat({
           cardOne: cardOne,
@@ -141,8 +142,6 @@ class Cards extends React.Component {
     }
   }
 
-
-
   render(){
     return (
       <div className="columns">
@@ -157,13 +156,6 @@ class Cards extends React.Component {
                 />
               ))}
           </div>
-          {/* <div className={this.state.sets.length ? "modal" : "modal is-active"}>
-            <div className="modal-background"></div>
-            <div className="modal-content">
-              hi
-            </div>
-            <button className="modal-close is-large" aria-label="close"></button>
-          </div> */}
         </div>
         <div className="column">
           <div className="sets">
