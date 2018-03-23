@@ -31,8 +31,11 @@ class App extends Component {
           </div>
           <div className="column">
             <div className="content">
-              <h2>Hello World</h2>
+              <h2 className="has-text-primary">Hello World</h2>
+              
+
             </div>
+
             <a className="button is-primary">
               Primary button
             </a>

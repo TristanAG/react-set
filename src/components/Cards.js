@@ -36,7 +36,7 @@ class Cards extends React.Component {
   }
 
   clearModal(){
-    console.log('hello there!')
+
     this.setState(() => ({
       isOpen: false
     }))
@@ -173,8 +173,22 @@ class Cards extends React.Component {
         </div>
         <div className="column">
           <div className="sets">
-            <SetModal isOpen={this.state.isOpen} clearModal={this.clearModal}/>
-            <Sets sets={this.state.sets} setNum={this.state.sets.length}/>
+
+            {/* {this.state.isOpen && console.log(this.state.sets[this.state.sets.length - 1])} */}
+            <SetModal
+              isOpen={this.state.isOpen}
+              clearModal={this.clearModal}
+              set={this.state.sets[this.state.sets.length - 1]}
+            />
+
+
+
+            <Sets
+              sets={this.state.sets}
+              setNum={this.state.sets.length}
+              setCards={this.state.sets[this.state.sets.length - 1]}
+            />
+
           </div>
         </div>
       </div>
