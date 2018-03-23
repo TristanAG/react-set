@@ -36,7 +36,6 @@ class Cards extends React.Component {
   }
 
   clearModal(){
-
     this.setState(() => ({
       isOpen: false
     }))
@@ -128,25 +127,24 @@ class Cards extends React.Component {
               }
             }
 
+
+
     if(
       colorStatus === 'pass' &&
       shapeStatus === 'pass' &&
       amountStatus === 'pass' &&
       fillStatus === 'pass'
     ){
-      // alert('SET!')
-
-
 
       this.setState((prevState) => ({
         isOpen: true,
+        status: [colorStatus, shapeStatus, amountStatus, fillStatus],
         sets: prevState.sets.concat({
           cardOne: cardOne,
           cardTwo: cardTwo,
           cardThree: cardThree
         }),
         selectedCards: []
-
       }))
     }else{
       alert('not a set tho...')
@@ -173,22 +171,17 @@ class Cards extends React.Component {
         </div>
         <div className="column">
           <div className="sets">
-
-            {/* {this.state.isOpen && console.log(this.state.sets[this.state.sets.length - 1])} */}
             <SetModal
               isOpen={this.state.isOpen}
               clearModal={this.clearModal}
               set={this.state.sets[this.state.sets.length - 1]}
+              status={this.state.status}
             />
-
-
-
             <Sets
               sets={this.state.sets}
               setNum={this.state.sets.length}
               setCards={this.state.sets[this.state.sets.length - 1]}
             />
-
           </div>
         </div>
       </div>
