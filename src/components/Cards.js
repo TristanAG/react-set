@@ -1,11 +1,14 @@
 import React from 'react'
 import Card from './Card'
 import Sets from './Sets'
+// import Modal from 'react-modal'
+import SetModal from './SetModal'
 
 class Cards extends React.Component {
   constructor(props){
     super(props)
     this.addCardToHand = this.addCardToHand.bind(this)
+    this.clearModal = this.clearModal.bind(this)
     this.state = {
       isActive: false,
       selectedCards: [],
@@ -30,6 +33,13 @@ class Cards extends React.Component {
         }
       })
     }
+  }
+
+  clearModal(){
+    console.log('hello there!')
+    this.setState(() => ({
+      isOpen: false
+    }))
   }
 
   determineIfSet(){
@@ -124,15 +134,19 @@ class Cards extends React.Component {
       amountStatus === 'pass' &&
       fillStatus === 'pass'
     ){
-      alert('SET!')
+      // alert('SET!')
+
+
 
       this.setState((prevState) => ({
+        isOpen: true,
         sets: prevState.sets.concat({
           cardOne: cardOne,
           cardTwo: cardTwo,
           cardThree: cardThree
         }),
         selectedCards: []
+
       }))
     }else{
       alert('not a set tho...')
@@ -159,6 +173,7 @@ class Cards extends React.Component {
         </div>
         <div className="column">
           <div className="sets">
+            <SetModal isOpen={this.state.isOpen} clearModal={this.clearModal}/>
             <Sets sets={this.state.sets} setNum={this.state.sets.length}/>
           </div>
         </div>
