@@ -28,19 +28,19 @@ class SetModal extends React.Component {
                 <tbody>
                   <tr>
                     <td>color</td>
-                    <td><p>{this.props.status[0]}</p></td>
+                    <td><p className="has-text-success">{this.props.status[0]}</p></td>
                   </tr>
                   <tr>
                     <td>shape</td>
-                    <td>{this.props.status[1]}</td>
+                    <td><p className="has-text-success">{this.props.status[1]}</p></td>
                   </tr>
                   <tr>
                     <td>amount</td>
-                    <td>{this.props.status[2]}</td>
+                    <td><p className="has-text-success">{this.props.status[2]}</p></td>
                   </tr>
                   <tr>
                     <td>fill</td>
-                    <td>{this.props.status[3]}</td>
+                    <td><p className="has-text-success">{this.props.status[3]}</p></td>
                   </tr>
                 </tbody>
               </table>

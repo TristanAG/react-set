@@ -15,6 +15,11 @@ class Cards extends React.Component {
       selectedCards: [],
       cards: this.props.cards,
       sets: []
+      // badSet: {
+      //   card1: {},
+      //   card2: {},
+      //   card3: {},
+      // }
     }
   }
 
@@ -150,7 +155,12 @@ class Cards extends React.Component {
     }else{
       this.setState((prevState) => ({
         // isOpen: true,
-        // badSet: [cardOne, cardTwo, cardThree],
+        status: [colorStatus, shapeStatus, amountStatus, fillStatus],
+        badSet: {
+          cardOne,
+          cardTwo,
+          cardThree,
+        },
         failIsOpen: true,
         selectedCards: []
       }))
@@ -178,13 +188,14 @@ class Cards extends React.Component {
               isOpen={this.state.isOpen}
               clearModal={this.clearModal}
               set={this.state.sets[this.state.sets.length - 1]}
-
               status={this.state.status}
             />
 
             <FailModal
               isOpen={this.state.failIsOpen}
               clearModal={this.clearModal}
+              set={this.state.badSet}
+              status={this.state.status}
             />
 
             <Sets
