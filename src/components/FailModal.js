@@ -6,7 +6,6 @@ class FailModal extends React.Component {
   constructor(props){
     super(props)
     ReactModal.setAppElement('#root');
-    console.log(props)
   }
 
   render() {

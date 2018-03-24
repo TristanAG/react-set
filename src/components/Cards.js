@@ -136,12 +136,7 @@ class Cards extends React.Component {
       }
     }
 
-    if(
-      colorStatus === 'pass' &&
-      shapeStatus === 'pass' &&
-      amountStatus === 'pass' &&
-      fillStatus === 'pass'
-    ){
+    if(colorStatus === 'pass' && shapeStatus === 'pass' && amountStatus === 'pass' && fillStatus === 'pass'){
 
       //TODO
       //HERE IS WHERE YOU USE THE FLAG TO CHECK IF THE SET HAS ALREADY BEEN SELECTED!!
@@ -153,14 +148,22 @@ class Cards extends React.Component {
 
 
       const flag = colorFlag + shapeFlag + amountFlag + fillFlag
+      let match = false
+      for (let set of this.state.sets) {
+        if(flag === set.flag){
+          match = true
+        }
+      }
 
+      
       this.setState((prevState) => ({
         isOpen: true,
         status: [colorStatus, shapeStatus, amountStatus, fillStatus],
         sets: prevState.sets.concat({
           cardOne: cardOne,
           cardTwo: cardTwo,
-          cardThree: cardThree
+          cardThree: cardThree,
+          flag: flag
         }),
         selectedCards: []
       }))
@@ -196,6 +199,7 @@ class Cards extends React.Component {
         </div>
         <div className="column">
           <div className="sets">
+            {/* {this.state.isOpen && console.log(this.state.sets[0].flag)} */}
             <SetModal
               isOpen={this.state.isOpen}
               clearModal={this.clearModal}
