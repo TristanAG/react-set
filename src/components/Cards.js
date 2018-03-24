@@ -137,16 +137,6 @@ class Cards extends React.Component {
     }
 
     if(colorStatus === 'pass' && shapeStatus === 'pass' && amountStatus === 'pass' && fillStatus === 'pass'){
-
-      //TODO
-      //HERE IS WHERE YOU USE THE FLAG TO CHECK IF THE SET HAS ALREADY BEEN SELECTED!!
-      //HERE IS WHERE YOU USE THE FLAG TO CHECK IF THE SET HAS ALREADY BEEN SELECTED!!
-      //HERE IS WHERE YOU USE THE FLAG TO CHECK IF THE SET HAS ALREADY BEEN SELECTED!!
-      //HERE IS WHERE YOU USE THE FLAG TO CHECK IF THE SET HAS ALREADY BEEN SELECTED!!
-      //HERE IS WHERE YOU USE THE FLAG TO CHECK IF THE SET HAS ALREADY BEEN SELECTED!!
-      //HERE IS WHERE YOU USE THE FLAG TO CHECK IF THE SET HAS ALREADY BEEN SELECTED!!
-
-
       const flag = colorFlag + shapeFlag + amountFlag + fillFlag
       let match = false
       for (let set of this.state.sets) {
@@ -154,28 +144,28 @@ class Cards extends React.Component {
           match = true
         }
       }
-
-      
-      this.setState((prevState) => ({
-        isOpen: true,
-        status: [colorStatus, shapeStatus, amountStatus, fillStatus],
-        sets: prevState.sets.concat({
-          cardOne: cardOne,
-          cardTwo: cardTwo,
-          cardThree: cardThree,
-          flag: flag
-        }),
-        selectedCards: []
-      }))
+      if(!match){
+        this.setState((prevState) => ({
+          isOpen: true,
+          status: [colorStatus, shapeStatus, amountStatus, fillStatus],
+          sets: prevState.sets.concat({
+            cardOne: cardOne,
+            cardTwo: cardTwo,
+            cardThree: cardThree,
+            flag: flag
+          }),
+          selectedCards: []
+        }))
+      }else{
+        alert('already got dis 1')
+        this.setState(() => ({
+          selectedCards: []
+        }))
+      }
     }else{
       this.setState((prevState) => ({
-        // isOpen: true,
         status: [colorStatus, shapeStatus, amountStatus, fillStatus],
-        badSet: {
-          cardOne,
-          cardTwo,
-          cardThree,
-        },
+        badSet: {cardOne, cardTwo, cardThree},
         failIsOpen: true,
         selectedCards: []
       }))
