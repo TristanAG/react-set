@@ -3,6 +3,7 @@ import Card from './Card'
 import Sets from './Sets'
 // import Modal from 'react-modal'
 import SetModal from './SetModal'
+import FailModal from './FailModal'
 
 class Cards extends React.Component {
   constructor(props){
@@ -37,7 +38,8 @@ class Cards extends React.Component {
 
   clearModal(){
     this.setState(() => ({
-      isOpen: false
+      isOpen: false,
+      failIsOpen: false
     }))
   }
 
@@ -135,7 +137,6 @@ class Cards extends React.Component {
       amountStatus === 'pass' &&
       fillStatus === 'pass'
     ){
-
       this.setState((prevState) => ({
         isOpen: true,
         status: [colorStatus, shapeStatus, amountStatus, fillStatus],
@@ -147,10 +148,10 @@ class Cards extends React.Component {
         selectedCards: []
       }))
     }else{
-      alert('not a set tho...')
       this.setState((prevState) => ({
         // isOpen: true,
         // badSet: [cardOne, cardTwo, cardThree],
+        failIsOpen: true,
         selectedCards: []
       }))
     }
@@ -179,6 +180,11 @@ class Cards extends React.Component {
               set={this.state.sets[this.state.sets.length - 1]}
 
               status={this.state.status}
+            />
+
+            <FailModal
+              isOpen={this.state.failIsOpen}
+              clearModal={this.clearModal}
             />
 
             <Sets

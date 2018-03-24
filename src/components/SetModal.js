@@ -14,7 +14,7 @@ class SetModal extends React.Component {
         isOpen={this.props.isOpen}
         contentLabel="set modal"
         aria={{
-          labelledby: "Set Confirm Modal",
+          labelledby: "Set confirmation modal",
           describedby: "set confirmation"
         }}
       >
@@ -45,7 +45,6 @@ class SetModal extends React.Component {
                 </tbody>
               </table>
             }
-
             <button
               className="button is-success"
               onClick={this.props.clearModal}
