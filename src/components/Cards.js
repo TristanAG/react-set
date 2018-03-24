@@ -202,6 +202,9 @@ class Cards extends React.Component {
               set={this.state.badSet}
               status={this.state.status}
             />
+            <div className="content">
+              <h3 className="has-text-primary">Sets:</h3>
+            </div>
             <Sets
               sets={this.state.sets}
               setNum={this.state.sets.length}

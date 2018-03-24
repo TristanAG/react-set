@@ -45,12 +45,14 @@ class SetModal extends React.Component {
                 </tbody>
               </table>
             }
+
             <button
-              className="button is-success"
+              className="button is-success is-large"
               onClick={this.props.clearModal}
             >
               close
             </button>
+
           </center>
         </div>
       </ReactModal>

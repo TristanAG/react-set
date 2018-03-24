@@ -46,7 +46,7 @@ class FailModal extends React.Component {
               }
 
             <button
-              className="button is-danger"
+              className="button is-danger is-large"
               onClick={this.props.clearModal}
             >
               close
