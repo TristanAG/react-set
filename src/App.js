@@ -23,24 +23,10 @@ class App extends Component {
       <div className="app">
         <div className="columns">
           <div className="column">
-
             <div className="info">
               set-game
             </div>
-
           </div>
-          <div className="column">
-            <div className="content">
-              <h2 className="has-text-primary">Hello World</h2>
-              
-
-            </div>
-
-            <a className="button is-primary">
-              Primary button
-            </a>
-          </div>
-
         </div>
         <Cards
           cards={this.props.cards}

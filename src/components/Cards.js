@@ -204,6 +204,12 @@ class Cards extends React.Component {
             />
             <div className="content">
               <h3 className="has-text-primary">Sets:</h3>
+
+              <div className="notification is-warning">
+                <button className="delete"></button>
+                Already copped that one doe..
+              </div>
+
             </div>
             <Sets
               sets={this.state.sets}
