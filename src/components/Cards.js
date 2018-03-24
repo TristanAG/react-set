@@ -149,6 +149,8 @@ class Cards extends React.Component {
     }else{
       alert('not a set tho...')
       this.setState((prevState) => ({
+        // isOpen: true,
+        // badSet: [cardOne, cardTwo, cardThree],
         selectedCards: []
       }))
     }
@@ -175,8 +177,10 @@ class Cards extends React.Component {
               isOpen={this.state.isOpen}
               clearModal={this.clearModal}
               set={this.state.sets[this.state.sets.length - 1]}
+
               status={this.state.status}
             />
+
             <Sets
               sets={this.state.sets}
               setNum={this.state.sets.length}
