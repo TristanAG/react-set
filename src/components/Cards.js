@@ -3,6 +3,7 @@ import Card from './Card'
 import Sets from './Sets'
 import SetModal from './SetModal'
 import FailModal from './FailModal'
+import DupModal from './DupModal'
 
 class Cards extends React.Component {
   constructor(props){
@@ -38,7 +39,8 @@ class Cards extends React.Component {
   clearModal(){
     this.setState(() => ({
       isOpen: false,
-      failIsOpen: false
+      failIsOpen: false,
+      warning: false
     }))
   }
 
@@ -157,9 +159,9 @@ class Cards extends React.Component {
           selectedCards: []
         }))
       }else{
-        alert('already got dis 1')
         this.setState(() => ({
-          selectedCards: []
+          selectedCards: [],
+          warning: true
         }))
       }
     }else{
@@ -189,7 +191,6 @@ class Cards extends React.Component {
         </div>
         <div className="column">
           <div className="sets">
-            {/* {this.state.isOpen && console.log(this.state.sets[0].flag)} */}
             <SetModal
               isOpen={this.state.isOpen}
               clearModal={this.clearModal}
@@ -202,14 +203,12 @@ class Cards extends React.Component {
               set={this.state.badSet}
               status={this.state.status}
             />
+            <DupModal
+              isOpen={this.state.warning}
+              clearModal={this.clearModal}
+            />
             <div className="content">
               <h3 className="has-text-primary">Sets:</h3>
-
-              <div className="notification is-warning">
-                <button className="delete"></button>
-                Already copped that one doe..
-              </div>
-
             </div>
             <Sets
               sets={this.state.sets}

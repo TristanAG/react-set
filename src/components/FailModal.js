@@ -17,6 +17,7 @@ class FailModal extends React.Component {
           labelledby: "fail modal",
           describedby: "fail"
         }}
+        style={{height: 300, width: 300}}
       >
         <div className="content">
           <center>

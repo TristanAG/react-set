@@ -50,3 +50,17 @@ p{
 td{
   width: 50%;
 }
+
+.ReactModal__Content {
+  opacity: 0;
+}
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+  transition: opacity 180ms;
+}
+
+.ReactModal__Content--before-close {
+  transition: opacity 180ms;
+  opacity: 0;
+}
