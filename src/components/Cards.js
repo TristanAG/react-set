@@ -158,7 +158,7 @@ class Cards extends React.Component {
           }),
           selectedCards: []
         }))
-      }else{
+      }else{ 
         this.setState(() => ({
           selectedCards: [],
           warning: true
