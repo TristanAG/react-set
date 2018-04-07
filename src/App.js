@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Cards from './components/Cards'
+import Board from './components/Board'
 
 class App extends Component {
   constructor(props){
@@ -31,12 +31,12 @@ class App extends Component {
             <div className="info">
               set-game
             </div>
-            <div class="content">
+            <div className="content">
               <p><a>how to play</a> | <a>about</a></p>
             </div>
           </div>
         </div>
-        <Cards
+        <Board
           cards={this.props.cards}
           renderSelectedCards={this.renderSelectedCards}
         />

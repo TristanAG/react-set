@@ -5,7 +5,7 @@ import SetModal from './SetModal'
 import FailModal from './FailModal'
 import DupModal from './DupModal'
 
-class Cards extends React.Component {
+class Board extends React.Component {
   constructor(props){
     super(props)
     this.addCardToHand = this.addCardToHand.bind(this)
@@ -19,29 +19,31 @@ class Cards extends React.Component {
   }
 
   addCardToHand(selectedCard){
+    // 1) first determine if the card is already in the hand
     let cardAlreadyInHand = false
-    for (let card of this.state.selectedCards) {
+    for(let card of this.state.selectedCards){
       if(card.name === selectedCard.name){
         cardAlreadyInHand = true
       }
     }
-
-    if(!cardAlreadyInHand){
-      if(this.state.selectedCards.includes(selectedCard)){
-        this.setState((prevState) => ({
-          selectedCards: prevState.selectedCards.filter((card) => {
-            return selectedCard.name !== card.name
-          })
-        }))
-      } else {
-        this.setState((prevState) => ({
-          selectedCards: prevState.selectedCards.concat(selectedCard)
-        }),() => {
-          if(this.state.selectedCards.length === 3){
-            this.determineIfSet()
-          }
+    // 2) now add or remove card from hand if you're already holdin or not
+    if(cardAlreadyInHand){
+      // 3) already in hand means you need to remove it
+      this.setState((prevState) => ({
+        selectedCards: prevState.selectedCards.filter((card) => {
+          return selectedCard.name !== card.name
         })
-      }
+      }))
+    }else{
+      // 4) not yet in hand means you need to add it
+      this.setState((prevState) => ({
+        selectedCards: prevState.selectedCards.concat(selectedCard)
+      }), () => {
+        if(this.state.selectedCards.length === 3){
+          // 5) you've added 3 valid cards to the hand, so it's time to check for a SET
+          this.determineIfSet()
+        }
+      })
     }
   }
 
@@ -200,6 +202,14 @@ class Cards extends React.Component {
         </div>
         <div className="column">
           <div className="sets">
+            <div className="content">
+              <h3 className="has-text-primary">Sets: ? / ?</h3>
+            </div>
+            <Sets
+              sets={this.state.sets}
+              setNum={this.state.sets.length}
+              setCards={this.state.sets[this.state.sets.length - 1]}
+            />
             <SetModal
               isOpen={this.state.isOpen}
               clearModal={this.clearModal}
@@ -216,14 +226,6 @@ class Cards extends React.Component {
               isOpen={this.state.warning}
               clearModal={this.clearModal}
             />
-            <div className="content">
-              <h3 className="has-text-primary">Sets: ? / ?</h3>
-            </div>
-            <Sets
-              sets={this.state.sets}
-              setNum={this.state.sets.length}
-              setCards={this.state.sets[this.state.sets.length - 1]}
-            />
           </div>
         </div>
       </div>
@@ -231,4 +233,4 @@ class Cards extends React.Component {
   }
 }
 
-export default Cards
+export default Board
