@@ -19,20 +19,29 @@ class Cards extends React.Component {
   }
 
   addCardToHand(selectedCard){
-    if(this.state.selectedCards.includes(selectedCard)){
-      this.setState((prevState) => ({
-        selectedCards: prevState.selectedCards.filter((card) => {
-          return selectedCard.name !== card.name
+    let cardAlreadyInHand = false
+    for (let card of this.state.selectedCards) {
+      if(card.name === selectedCard.name){
+        cardAlreadyInHand = true
+      }
+    }
+
+    if(!cardAlreadyInHand){
+      if(this.state.selectedCards.includes(selectedCard)){
+        this.setState((prevState) => ({
+          selectedCards: prevState.selectedCards.filter((card) => {
+            return selectedCard.name !== card.name
+          })
+        }))
+      } else {
+        this.setState((prevState) => ({
+          selectedCards: prevState.selectedCards.concat(selectedCard)
+        }),() => {
+          if(this.state.selectedCards.length === 3){
+            this.determineIfSet()
+          }
         })
-      }))
-    } else {
-      this.setState((prevState) => ({
-        selectedCards: prevState.selectedCards.concat(selectedCard)
-      }),() => {
-        if(this.state.selectedCards.length === 3){
-          this.determineIfSet()
-        }
-      })
+      }
     }
   }
 
@@ -158,7 +167,7 @@ class Cards extends React.Component {
           }),
           selectedCards: []
         }))
-      }else{ 
+      }else{
         this.setState(() => ({
           selectedCards: [],
           warning: true
@@ -208,7 +217,7 @@ class Cards extends React.Component {
               clearModal={this.clearModal}
             />
             <div className="content">
-              <h3 className="has-text-primary">Sets:</h3>
+              <h3 className="has-text-primary">Sets: ? / ?</h3>
             </div>
             <Sets
               sets={this.state.sets}

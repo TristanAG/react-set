@@ -88,9 +88,6 @@ import RedSquiggleTwoEmpty from './cards/RedSquiggleTwoEmpty.png'
 import RedSquiggleTwoFilled from './cards/RedSquiggleTwoFilled.png'
 import RedSquiggleTwoStriped from './cards/RedSquiggleTwoStriped.png'
 
-
-
-
 export default [
   /*GreenDiamond*/
   {
@@ -99,7 +96,7 @@ export default [
     shape: 'diamond',
     amount: 1,
     fill: 'empty',
-    isActive: false,
+
     image: GreenDiamondOneEmpty
   },
   {

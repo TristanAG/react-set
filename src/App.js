@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 import Cards from './components/Cards'
 
-
 class App extends Component {
   constructor(props){
     super(props)
     this.renderSelectedCards = this.renderSelectedCards.bind(this)
     this.state = {
-      cards: this.props.cards
+      cards: this.shuffleCards()
     }
+  }
+
+  shuffleCards(){
+    const cards = this.props.cards
+    cards.length = 16
+    return cards
   }
 
   renderSelectedCards(props){
@@ -25,6 +30,9 @@ class App extends Component {
           <div className="column">
             <div className="info">
               set-game
+            </div>
+            <div class="content">
+              <p><a>how to play</a> | <a>about</a></p>
             </div>
           </div>
         </div>
