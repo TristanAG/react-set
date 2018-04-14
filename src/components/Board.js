@@ -203,7 +203,7 @@ class Board extends React.Component {
         <div className="column">
           <div className="sets">
             <div className="content">
-              <h3 className="has-text-primary">Sets: ? / ?</h3>
+              {this.state.sets.length > 0 && <h3 className="has-text-primary">Sets:</h3>}
             </div>
             <Sets
               sets={this.state.sets}

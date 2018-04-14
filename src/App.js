@@ -32,7 +32,7 @@ class App extends Component {
               set-game
             </div>
             <div className="content">
-              <p><a>how to play</a> | <a>about</a></p>
+              <p><a href="https://www.setgame.com/sites/default/files/instructions/SET%20INSTRUCTIONS%20-%20ENGLISH.pdf" target="none">how to play</a></p>
             </div>
           </div>
         </div>
