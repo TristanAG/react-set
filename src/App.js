@@ -6,8 +6,10 @@ class App extends Component {
   constructor(props){
     super(props)
     this.renderSelectedCards = this.renderSelectedCards.bind(this)
+
     this.state = {
-      cards: this.shuffleCards()
+      cards: this.shuffleCards(),
+      test: '<< tristanag'
     }
   }
 
@@ -29,10 +31,11 @@ class App extends Component {
         <div className="columns">
           <div className="column">
             <div className="info">
-              set-game
+              react-set
             </div>
             <div className="content">
-              <p><a href="https://www.setgame.com/sites/default/files/instructions/SET%20INSTRUCTIONS%20-%20ENGLISH.pdf" target="none">how to play</a></p>
+              by <a class="has-text-primary" href="http://www.tristangruener.com"> {this.state.test}</a> <br/>
+               <a href="https://www.setgame.com/sites/default/files/instructions/SET%20INSTRUCTIONS%20-%20ENGLISH.pdf" target="none" class="has-text-grey" style={{textDecoration: "underline"}}>how to play</a>
             </div>
           </div>
         </div>
